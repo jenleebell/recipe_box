@@ -1,6 +1,11 @@
 require('spec_helper')
 
 describe(Ingredient) do
+  it('validates the presence of name') do
+    test_ingredient = Ingredient.new({:name => ""})
+    expect(test_ingredient.save()).to(eq(false))
+  end
+
   describe('#recipes') do
     it('lists all the recipes in it') do
       test_recipe = Recipe.create({:name => "yogurt and berries", :instructions => "mix yogurt and berries", :rating => 5})
