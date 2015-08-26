@@ -34,4 +34,13 @@ describe(Recipe) do
       expect(test_recipe.categories()).to(eq([test_category]))
     end
   end
+
+  describe('#ingredients') do
+    it('lists all the ingredients in it') do
+      test_recipe = Recipe.create({:name => "yogurt and berries", :instructions => "mix yogurt and berries"})
+      test_ingredient = Ingredient.create({:name => "yogurt"})
+      test_recipe.ingredients.push(test_ingredient)
+      expect(test_recipe.ingredients()).to(eq([test_ingredient]))
+    end
+  end
 end
