@@ -21,6 +21,11 @@ describe(Recipe) do
     expect(test_recipe.save()).to(eq(false))
   end
 
+  it('capitalizes the first letter of each word in the name') do
+    test_recipe = Recipe.create({:name => "yogurt and berries", :instructions => "mix yogurt and berries"})
+    expect(test_recipe.name()).to(eq("Yogurt And Berries"))
+  end
+
   describe('#categories') do
     it('lists all the categories in it') do
       test_recipe = Recipe.create({:name => "yogurt and berries", :instructions => "mix yogurt and berries", :rating => 5})
