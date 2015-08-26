@@ -6,6 +6,11 @@ describe(Category) do
     expect(test_category.save()).to(eq(false))
   end
 
+  it('converts the name to uppercase') do
+    test_category = Category.create({:name => "BreAKfAST"})
+    expect(test_category.name()).to(eq("BREAKFAST"))
+  end
+
   describe('#recipes') do
     it('lists all the recipes in it') do
       test_recipe = Recipe.create({:name => "yogurt and berries", :instructions => "mix yogurt and berries", :rating => 5})
