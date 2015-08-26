@@ -16,6 +16,11 @@ describe(Recipe) do
     expect(test_recipe.save()).to(eq(false))
   end
 
+  it('ensures the rating is nil or between 1-5') do
+    test_recipe = Recipe.new({:name => "yogurt and berries", :instructions => "mix yogurt and berries", :rating => 6})
+    expect(test_recipe.save()).to(eq(false))
+  end
+
   describe('#categories') do
     it('lists all the categories in it') do
       test_recipe = Recipe.create({:name => "yogurt and berries", :instructions => "mix yogurt and berries", :rating => 5})
