@@ -1,6 +1,21 @@
 require('spec_helper')
 
 describe(Recipe) do
+  it('validates the presence of name') do
+    test_recipe = Recipe.new({:name => ""})
+    expect(test_recipe.save()).to(eq(false))
+  end
+
+  it('validates the presence of instructions') do
+    test_recipe = Recipe.new({:name => "yogurt and berries", :instructions => ""})
+    expect(test_recipe.save()).to(eq(false))
+  end
+
+  it('ensures the length of name is at most 50 characters') do
+    test_recipe = Recipe.new({:name => "a".*(51)})
+    expect(test_recipe.save()).to(eq(false))
+  end
+
   describe('#categories') do
     it('lists all the categories in it') do
       test_recipe = Recipe.create({:name => "yogurt and berries", :instructions => "mix yogurt and berries", :rating => 5})
