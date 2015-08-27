@@ -1,29 +1,31 @@
-<h1>Recipe Details:</h1>
+<h1><b><u><%= @recipe.name %>:</u></b></h1>
+<h4>
+<b>Description:</b>
 <br>
-Name: <%= @recipe.name %>
+<span style="padding-left: 20px; display:block"><%= @recipe.description %></span>
 <br>
-Description: <%= @recipe.description %>
-<br>
-Ingredients:
+<b>Ingredients:</b>
 <% if @recipe.ingredients.any?() %>
-  <h3>Here are your ingredients:</h3>
   <ul>
   <% @recipe.ingredients.each() do |ingredient| %>
-    <li><%= ingredient.amount() %> <%= ingredient.name() %> </li>
+    <li><%= ingredient.amounts.first.quantity() %> <%= ingredient.name() %> </li>
   <% end %>
   </ul>
 
 <% else %>
-  <p>You have no ingredients for this recipe. Add one below!</p>
+<span style="padding-left: 20px; display:block"><p>You have no ingredients for this recipe. Add one below!</p></span>
 <% end %>
-Instructions:
+<b>Instructions:</b>
 <br>
-Rating:
+<span style="padding-left: 20px; display:block"><%= @recipe.instructions() %></span>
+<br>
+<b>Rating:</b>
+<br>
 <% if @recipe.rating != nil %>
-  <%= @recipe.rating %> STARS!
+<span style="padding-left: 20px; display:block"><%= @recipe.rating %> STARS!</span>
 <% end %>
 <br>
-Categories:
+<b>Categories:</b>
 <% if @recipe.categories.any?() %>
   <ul>
     <% @recipe.categories.each() do |category| %>
@@ -31,7 +33,7 @@ Categories:
     <% end %>
   </ul>
 <% end %>
-
+</h4>
 <br>
 <br>
 
@@ -43,15 +45,16 @@ Categories:
 <br>
 
 <h3>Add new ingredient!</h3>
-<form action="" method="post">
+<form action="/ingredients" method="post">
+  <input id='recipe_id' name='recipe_id' type='hidden' value='<%= @recipe.id() %>'>
   <div class="form-group">
     <label for="ingredient">Ingredient:</label>
     <input id="ingredient" name="ingredient" class="form-control" type="text" placeholder="e.g. popcorn">
   </div>
 
   <div class="form-group">
-    <label for="amount">Amount:</label>
-    <input id="amount" name="amount" class="form-control" type="text" placeholder="e.g. 4 cups">
+    <label for="quantity">Quantity:</label>
+    <input id="quantity" name="quantity" class="form-control" type="text" placeholder="e.g. 4 cups">
   </div>
   <button type="submit" class="btn btn-default">Add Ingredient</button>
 </form>
@@ -60,7 +63,8 @@ Categories:
 <br>
 
 <h3>Add new category!</h3>
-<form action="" method="post">
+<form action="/categories" method="post">
+  <input id='recipe_id' name='recipe_id' type='hidden' value='<%= @recipe.id() %>'>
   <div class="form-group">
     <label for="category">Category:</label>
     <input id="category" name="category" class="form-control" type="text" placeholder="e.g. breakfast">
@@ -72,18 +76,16 @@ Categories:
 <br>
 
 <h3>Rate this recipe!</h3>
-<form action="" method="post">
-  <div class="btn-group">
-    <label for="rating">Rating:</label>
-    <br>
-    <button type="button" class="btn btn-default" id="rating" name="rating" value=1>1</button>
-    <button type="button" class="btn btn-default" id="rating" name="rating" value=2>2</button>
-    <button type="button" class="btn btn-default" id="rating" name="rating" value=3>3</button>
-    <button type="button" class="btn btn-default" id="rating" name="rating" value=4>4</button>
-    <button type="button" class="btn btn-default" id="rating" name="rating" value=5>5</button>
+<form action="/rating" method="post">
+  <input id='recipe_id' name='recipe_id' type='hidden' value='<%= @recipe.id() %>'>
+  <div class="form-group">
+    <input id="rating" name="rating" type="radio" value=nil>No Rating
+    <input id="rating" name="rating" type="radio" value=1>1 Star
+    <input id="rating" name="rating" type="radio" value=2>2 Stars
+    <input id="rating" name="rating" type="radio" value=3>3 Stars
+    <input id="rating" name="rating" type="radio" value=4>4 Stars
+    <input id="rating" name="rating" type="radio" value=5>5 Stars
   </div>
-  <br>
-  <br>
   <button type="submit" class="btn btn-default">Add Rating</button>
 </form>
 

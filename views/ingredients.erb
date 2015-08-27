@@ -1,0 +1,14 @@
+<% if @ingredients.any?() %>
+<h2>Select a ingredient below to view all recipes using that ingredient:</h2>
+<br>
+<ul>
+  <% @ingredients.each() do |ingredient| %>
+  <li><a href="/ingredient/<%= ingredient.id() %>"><%= ingredient.name() %></a></li>
+  <% end %>
+</ul>
+
+<% else %>
+<p>You have no ingredients, silly pika... <a href="/recipe/new">Add a recipe!</a></p>
+<% end %>
+<br>
+<a href="/">Back</a>

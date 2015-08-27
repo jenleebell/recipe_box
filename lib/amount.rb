@@ -1,12 +1,13 @@
 class Amount < ActiveRecord::Base
-  belongs_to(:ingredients)
-  before_save(:downcase_amount)
+  belongs_to(:ingredient)
+  belongs_to(:recipe)
+  before_save(:downcase_quantity)
 
   private
 
-  define_method(:downcase_amount) do
-    if self.amount() != nil
-      self.amount=(amount().downcase())
+  define_method(:downcase_quantity) do
+    if self.quantity() != nil
+      self.quantity=(quantity().downcase())
     end
   end
 end

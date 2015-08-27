@@ -1,0 +1,14 @@
+<% if @categories.any?() %>
+<h2>Select a category below to view all recipes within that category:</h2>
+<br>
+  <ul>
+    <% @categories.each() do |category| %>
+    <li><a href="/category/<%= category.id() %>"><%= category.name() %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+<p>You have no categories, silly pika... <a href="/recipe/new">Add a recipe!</a></p>
+<% end %>
+<br>
+<a href="/">Back</a>

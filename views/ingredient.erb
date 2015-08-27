@@ -1,0 +1,23 @@
+<% if @recipes.any?() %>
+<h2>Here are all of the recipes using <%= @ingredient.name %>:</h2>
+<br>
+<ul>
+  <% @recipes.each() do |recipe| %>
+  <li><a href="/recipe/<%= recipe.id() %>"><%= recipe.name() %></a></li>
+  <% end %>
+</ul>
+
+<% else %>
+<p>You have no recipes using <%= @ingredient.name %>, silly pika... <a href="/recipe/new">Add a recipe!</a></p>
+<% end %>
+
+<br>
+<br>
+<center><form action="/ingredient/<%= @ingredient.id() %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button class="btn-danger" type="submit">DELETE INGREDIENT</button>
+</form></center>
+<br>
+<a href="/recipes/ingredient">Back</a>
+<br>
+<a href="/">Home Page</a>

@@ -23,7 +23,7 @@ describe(Ingredient) do
   describe('#amounts') do
     it('lists the amounts for the ingredient') do
       test_ingredient = Ingredient.create({:name => "yogurt"})
-      test_amount = Amount.create({:amount => "1/2 tablespoons"})
+      test_amount = Amount.create({:quantity => "1/2 tablespoons"})
       test_ingredient.amounts.push(test_amount)
       expect(test_ingredient.amounts()).to(eq([test_amount]))
     end
