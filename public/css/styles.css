@@ -1,6 +1,15 @@
+a {
+  text-decoration: none;
+  color: #474747;
+}
+
+
 body {
   text-align: center;
+  font-family: 'Cabin', sans-serif;
+  color: #474747;
 }
+
 body:after {
   content : "";
   display: block;
@@ -8,15 +17,15 @@ body:after {
   background-size: cover;
   top: 0;
   left: 0;
-  background-image: url("/../img/bread.jpg");
+  background-image: url("/../img/spices.jpg");
   width: 100%;
   height: 100%;
-  opacity : 0.6;
+  opacity : 0.75;
   z-index: -1;
 }
 
 .jumbotron {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 
@@ -29,5 +38,12 @@ h1 {
 
 .motto {
   font-family: 'Lobster', cursive;
+  font-size: 150%;
   padding-top: -50%;
+  color: #474747;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.index-body {
+  font-family: 'Cabin', sans-serif;
 }

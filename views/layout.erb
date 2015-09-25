@@ -2,14 +2,22 @@
 <html>
 <head>
   <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="bootstrap.js">
-  <link rel="stylesheet" href="/css/styles.css" media="screen" charset="utf-8">  <title>Recidex</title>
+  <link rel="stylesheet" href="/css/styles.css" media="screen" charset="utf-8">  <title>Recipe Box</title>
 </head>
 <body>
+  <div class="logo">
+    <h1>Recipe Box</h1>
+    <h3><span class="motto">your personal, online recipe book</span></h3>
+    <br>
+  </div>
   <div class="container">
-    <%= yield %>
+    <div class="jumbotron">
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>
