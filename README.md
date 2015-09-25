@@ -1,12 +1,12 @@
 # Recipe Box
 
-#####
+##### A web app that will house all of your personal recipes in one convenient online box
 
 #### By Jennifer Lee Bell
 
 ## Description
 
-This app will ...
+This simple web app will house all of your recipes. You can add new recipes with a name, description, ingredients, instructions, categories and even rate your recipe. You can search your box by name, category, or ingredient.
 
 ## Setup
 
