@@ -8,13 +8,14 @@ body {
   text-align: center;
   font-family: 'Cabin', sans-serif;
   color: #474747;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body:after {
   content : "";
   display: block;
   position: absolute;
-  background-size: cover;
   top: 0;
   left: 0;
   background-image: url("/../img/spices.jpg");
@@ -22,10 +23,14 @@ body:after {
   height: 100%;
   opacity : 0.75;
   z-index: -1;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .jumbotron {
   opacity: 0.85;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 
@@ -44,6 +49,6 @@ h1 {
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-.index-body {
-  font-family: 'Cabin', sans-serif;
+.recipe-info {
+  font-size: 150%;
 }

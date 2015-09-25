@@ -1,41 +1,40 @@
-<h1><b><u><%= @recipe.name %>:</u></b></h1>
-<h4>
-<b>Description:</b>
-<br>
-<span style="padding-left: 20px; display:block"><%= @recipe.description %></span>
-<br>
-<b>Ingredients:</b>
-<% if @recipe.ingredients.any?() %>
-  <ul>
-  <% @recipe.ingredients.each() do |ingredient| %>
-    <li><%= ingredient.amounts.first.quantity() %> <%= ingredient.name() %> </li>
-  <% end %>
-  </ul>
+<h1><%= @recipe.name %></h1>
+<div class="recipe-info">
 
-<% else %>
-<span style="padding-left: 20px; display:block"><p>You have no ingredients for this recipe. Add one below!</p></span>
-<% end %>
-<b>Instructions:</b>
-<br>
-<span style="padding-left: 20px; display:block"><%= @recipe.instructions() %></span>
-<br>
-<b>Rating:</b>
-<br>
-<% if @recipe.rating != nil %>
-<span style="padding-left: 20px; display:block"><%= @recipe.rating %> STARS!</span>
-<% end %>
-<br>
-<b>Categories:</b>
-<% if @recipe.categories.any?() %>
-  <ul>
-    <% @recipe.categories.each() do |category| %>
-    <li><%= category.name() %> </li>
+  <span style="padding-left: 20px; display:block"><%= @recipe.description %></span>
+  <br>
+  <!-- <b>Ingredients</b> -->
+  <% if @recipe.ingredients.any?() %>
+    <% @recipe.ingredients.each() do |ingredient| %>
+      <%= ingredient.amounts.first.quantity() %> <%= ingredient.name() %>
+      <br>
     <% end %>
-  </ul>
-<% end %>
-</h4>
-<br>
-<br>
+
+  <% else %>
+  <span style="padding-left: 20px; display:block"><p>You have no ingredients for this recipe. Add one below.</p></span>
+  <% end %>
+  <br>
+  <b>Instructions</b>
+  <br>
+  <span style="padding-left: 20px; display:block"><%= @recipe.instructions() %></span>
+  <br>
+  <b>Rating</b>
+  <br>
+  <% if @recipe.rating != nil %>
+  <span style="padding-left: 20px; display:block"><%= @recipe.rating %> stars.</span>
+  <% end %>
+  <br>
+  <b>Categories</b>
+  <% if @recipe.categories.any?() %>
+      <% @recipe.categories.each() do |category| %>
+      <br>
+      <%= category.name() %>
+      <% end %>
+  <% end %>
+  </h4>
+  <br>
+  <br>
+</div>
 
 <center><div class="btn-group" role="group" aria-label="...">
   <button type="button" class="btn btn-default"><a href="/recipe/<%= @recipe.id %>/edit">Update Recipe</a></button>
@@ -44,7 +43,7 @@
 <br>
 <br>
 
-<h3>Add new ingredient!</h3>
+<h3>Add new ingredient</h3>
 <form action="/ingredients" method="post">
   <input id='recipe_id' name='recipe_id' type='hidden' value='<%= @recipe.id() %>'>
   <div class="form-group">
@@ -62,7 +61,7 @@
 <br>
 <br>
 
-<h3>Add new category!</h3>
+<h3>Add new category</h3>
 <form action="/categories" method="post">
   <input id='recipe_id' name='recipe_id' type='hidden' value='<%= @recipe.id() %>'>
   <div class="form-group">
@@ -75,7 +74,7 @@
 <br>
 <br>
 
-<h3>Rate this recipe!</h3>
+<h3>Rate this recipe</h3>
 <form action="/rating" method="post">
   <input id='recipe_id' name='recipe_id' type='hidden' value='<%= @recipe.id() %>'>
   <div class="form-group">
